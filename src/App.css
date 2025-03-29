@@ -9,7 +9,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: start;
-  height: 110vh;
   overflow:auto;
   --darkGray: #333;
   --litRed: #f00;
@@ -21,7 +20,7 @@ body {
 .app-container {
   width: 100%;
   max-width: 1200px;
-  padding: 20px;
+  padding: 0px;
   box-sizing: border-box;
   text-align: center;
 }
@@ -33,8 +32,6 @@ body {
   font-family: 'Fira Mono', monospace;
   letter-spacing: 3px;
   font-size: 55px;
-  margin-bottom: 20px;
-
 }
 
 @keyframes glitch {
@@ -189,14 +186,14 @@ body {
   display:grid;
   justify-content: center;
   gap: 10px; /* Space between Report Crime and Location buttons */
-  margin-top: 20px;
- 
+  padding: 15px;
 }
 
 
 /* Location Buttons Container */
 .location-buttons {
   position: relative; /* Container for absolute positioning */
+  padding: 20px;
 }
 
 /* Select Location Button */
