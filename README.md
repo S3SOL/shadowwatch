@@ -1,6 +1,6 @@
-Crime Mapping Application - Shadow Watch Program
-Overview
-This application is an interactive crime mapping tool that allows users to:
+# Crime Mapping Application - Shadow Watch Program
+# Overview
+# This application is an interactive crime mapping tool that allows users to:
 
 View reported crimes on a Google Map
 
@@ -10,7 +10,7 @@ Submit new crime reports with location details
 
 View detailed information about specific crimes
 
-Prerequisites
+# Prerequisites
 Before running the application, ensure you have the following installed:
 
 Node.js (v14 or higher)
@@ -19,8 +19,8 @@ npm (v6 or higher) or yarn
 
 Google Maps API key (see setup instructions below)
 
-Setup Instructions
-1. Get a Google Maps API Key
+# Setup Instructions
+## 1. Get a Google Maps API Key
 Go to the Google Cloud Console
 
 Create a new project or select an existing one
@@ -31,7 +31,7 @@ Create an API key in the "Credentials" section
 
 Restrict the key to your domain if deploying publicly
 
-2. Configure the Application
+## 2. Configure the Application
 Clone this repository:
 
 bash
