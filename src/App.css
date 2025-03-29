@@ -10,6 +10,7 @@ body {
   justify-content: center;
   align-items: start;
   overflow:auto;
+  height:100dvh;
   --darkGray: #333;
   --litRed: #f00;
   --glowRed: #633;
@@ -128,7 +129,7 @@ body {
 /* Map container style */
 .map-container {
   width: 1200px;
-  height: 75vh;
+  height: 75dvh;
   max-height: 800px;
   margin: 0 auto;
   border-radius: 12px;
@@ -354,7 +355,7 @@ button:has(+ button:focus), button:has(+ button:hover) {
   }
   .map-container {
     width: 95%;
-    height: 70vh;
+    height: 70dvh;
   }
 
   .mainheader {
