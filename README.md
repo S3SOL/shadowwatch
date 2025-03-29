@@ -34,10 +34,10 @@ Google Maps API key (see setup instructions below)
 ### 2. Configure the Application
 1. Clone this repository:
 
-bash
+```bash
 git clone https://github.com/your-repository/crime-map-app.git
 cd crime-map-app
-
+```
 2. Install dependencies:
 
 bash
