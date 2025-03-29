@@ -40,15 +40,16 @@ cd crime-map-app
 ```
 2. Install dependencies:
 
-bash
+```bash
 npm install
-#### or
+# or
 yarn install
-
+```
 3. Create a .env file in the root directory and add your Google Maps API key:
 
-env
+```env
 REACT_APP_GOOGLE_MAPS_API_KEY=your_api_key_here
+```
 
 4. Add your crime data to src/crimes.json (sample format included)
 
@@ -58,22 +59,22 @@ REACT_APP_GOOGLE_MAPS_API_KEY=your_api_key_here
 
 To run the application in development mode:
 
-bash
+```bash
 npm start
-#### or
+# or
 yarn start
-
+```
 This will start the development server and open the app in your default browser at http://localhost:3000.
 
 ### Production Build
 
 To create an optimized production build:
 
-bash
-Copynpm run build
-#### or
+```bash
+npm run build
+# or
 yarn build
-
+```
 This will create a build folder with the production-ready files.
 
 ## Features
