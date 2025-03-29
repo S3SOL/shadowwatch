@@ -1,6 +1,6 @@
-Crime Mapping Application - Shadow Watch Program
-Overview
-This application is an interactive crime mapping tool that allows users to:
+# Crime Mapping Application - Shadow Watch Program
+## Overview
+### This application is an interactive crime mapping tool that allows users to:
 
 View reported crimes on a Google Map
 
@@ -10,8 +10,8 @@ Submit new crime reports with location details
 
 View detailed information about specific crimes
 
-Prerequisites
-Before running the application, ensure you have the following installed:
+## Prerequisites
+### Before running the application, ensure you have the following installed:
 
 Node.js (v14 or higher)
 
@@ -19,64 +19,66 @@ npm (v6 or higher) or yarn
 
 Google Maps API key (see setup instructions below)
 
-Setup Instructions
-1. Get a Google Maps API Key
-Go to the Google Cloud Console
+## Setup Instructions
+### 1. Get a Google Maps API Key
+1. Go to the Google Cloud Console
 
-Create a new project or select an existing one
+2. Create a new project or select an existing one
 
-Enable the "Maps JavaScript API" for your project
+3. Enable the "Maps JavaScript API" for your project
 
-Create an API key in the "Credentials" section
+4. Create an API key in the "Credentials" section
 
-Restrict the key to your domain if deploying publicly
+5. Restrict the key to your domain if deploying publicly
 
-2. Configure the Application
-Clone this repository:
+### 2. Configure the Application
+1. Clone this repository:
 
-bash
-Copy
+```bash
 git clone https://github.com/your-repository/crime-map-app.git
 cd crime-map-app
-Install dependencies:
+```
+2. Install dependencies:
 
-bash
-Copy
+```bash
 npm install
 # or
 yarn install
-Create a .env file in the root directory and add your Google Maps API key:
+```
+3. Create a .env file in the root directory and add your Google Maps API key:
 
-env
-Copy
+```env
 REACT_APP_GOOGLE_MAPS_API_KEY=your_api_key_here
-Add your crime data to src/crimes.json (sample format included)
+```
 
-Running the Application
+4. Add your crime data to src/crimes.json (sample format included)
 
-Development Mode
+## Running the Application
+
+### Development Mode
 
 To run the application in development mode:
 
-bash
-Copy
+```bash
 npm start
 # or
 yarn start
+```
 This will start the development server and open the app in your default browser at http://localhost:3000.
 
-Production Build
+### Production Build
 
 To create an optimized production build:
 
-bash
-Copy
+```bash
 npm run build
 # or
 yarn build
+```
 This will create a build folder with the production-ready files.
 
-Features
+## Features
+
 Interactive Map: View all reported crimes on a dark-themed Google Map
 
 Crime Reporting: Submit new crime reports with type, details, and location
@@ -87,9 +89,8 @@ Search Functionality: Filter crimes by type, date, or ID
 
 Responsive Design: Works on desktop and mobile devices
 
-File Structure
+## File Structure
 
-Copy
 crime-map-app/
 ├── public/               # Static files
 ├── src/
@@ -101,7 +102,7 @@ crime-map-app/
 ├── package.json          # Project dependencies
 └── README.md             # This file
 
-Troubleshooting
+## Troubleshooting
 
 Map not loading: Verify your API key is correct and the Maps JavaScript API is enabled
 
