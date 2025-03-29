@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+Crime Mapping Application - Shadow Watch Program
+Overview
+This application is an interactive crime mapping tool that allows users to:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+View reported crimes on a Google Map
 
-## Available Scripts
+Search and filter existing crime reports
 
-In the project directory, you can run:
+Submit new crime reports with location details
 
-### `npm start`
+View detailed information about specific crimes
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Prerequisites
+Before running the application, ensure you have the following installed:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Node.js (v14 or higher)
 
-### `npm test`
+npm (v6 or higher) or yarn
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Google Maps API key (see setup instructions below)
 
-### `npm run build`
+Setup Instructions
+1. Get a Google Maps API Key
+Go to the Google Cloud Console
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Create a new project or select an existing one
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Enable the "Maps JavaScript API" for your project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Create an API key in the "Credentials" section
 
-### `npm run eject`
+Restrict the key to your domain if deploying publicly
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Configure the Application
+Clone this repository:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+bash
+Copy
+git clone https://github.com/your-repository/crime-map-app.git
+cd crime-map-app
+Install dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+bash
+Copy
+npm install
+# or
+yarn install
+Create a .env file in the root directory and add your Google Maps API key:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+env
+Copy
+REACT_APP_GOOGLE_MAPS_API_KEY=your_api_key_here
+Add your crime data to src/crimes.json (sample format included)
 
-## Learn More
+Running the Application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Development Mode
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To run the application in development mode:
 
-### Code Splitting
+bash
+Copy
+npm start
+# or
+yarn start
+This will start the development server and open the app in your default browser at http://localhost:3000.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Production Build
 
-### Analyzing the Bundle Size
+To create an optimized production build:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+bash
+Copy
+npm run build
+# or
+yarn build
+This will create a build folder with the production-ready files.
 
-### Making a Progressive Web App
+Features
+Interactive Map: View all reported crimes on a dark-themed Google Map
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Crime Reporting: Submit new crime reports with type, details, and location
 
-### Advanced Configuration
+Location Selection: Click on the map to select crime locations
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Search Functionality: Filter crimes by type, date, or ID
 
-### Deployment
+Responsive Design: Works on desktop and mobile devices
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+File Structure
 
-### `npm run build` fails to minify
+Copy
+crime-map-app/
+├── public/               # Static files
+├── src/
+│   ├── App.css           # Main styles
+│   ├── App.js            # Main application component
+│   ├── crimes.json       # Crime data
+│   └── index.js          # Application entry point
+├── .env                  # Environment variables
+├── package.json          # Project dependencies
+└── README.md             # This file
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Troubleshooting
+
+Map not loading: Verify your API key is correct and the Maps JavaScript API is enabled
+
+Missing crime data: Ensure crimes.json exists in the src folder with valid data
+
+Form submission issues: Check browser console for errors

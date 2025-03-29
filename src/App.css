@@ -1,38 +1,413 @@
-.App {
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400');
+
+/* General page styles */
+body {
+  margin: 0;
+  font-family: 'Fira Mono', monospace;
+  background-color: #222222;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 110vh;
+  overflow:auto;
+  --darkGray: #333;
+  --litRed: #f00;
+  --glowRed: #633;
+}
+
+
+/* Container for the entire app */
+.app-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+  box-sizing: border-box;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Heading style */
+.mainheader {
+  animation: glitch 3s linear infinite;
+  color: #fff;
+  font-family: 'Fira Mono', monospace;
+  letter-spacing: 3px;
+  font-size: 55px;
+  margin-bottom: 20px;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes glitch {
+  2%,
+  64% {
+    transform: translate(2px, 0) skew(5deg);
+  }
+  4%,
+  60% {
+    transform: translate(0px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(-11deg);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.mainheader:before,
+.mainheader:after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+}
+
+.mainheader:before {
+  animation: glitchTop 1s linear infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+}
+
+@keyframes glitchTop {
+  2%,
+  64% {
+    transform: translate(2px, -2px);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 2px);
+  }
+  62% {
+    transform: translate(13px, -1px) skew(-13deg);
+  }
+}
+
+.mainheader:after {
+  animation: glitchBotom 1.5s linear infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+}
+
+@keyframes glitchBotom {
+  2%,
+  64% {
+    transform: translate(-2px, 0);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 0);
+  }
+  62% {
+    transform: translate(-22px, 5px) skew(21deg);
+  }
+}
+/* Search Bar */
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 350px;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  font-family: 'Fira Mono', monospace;
+}
+
+
+/* Confirm Location Button */
+.confirm-location-button {
+  position: absolute;
+  top: 160px;
+  left: 20px;
+  padding: 10px;
+  background-color: #00cc00;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Fira Mono', monospace;
+  z-index: 1;
+}
+
+/* Map container style */
+.map-container {
+  width: 1200px;
+  height: 75vh;
+  max-height: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  background-color: #222; /* Dark background to match the map theme */
+}
+
+/* Ensure the GoogleMap fills its container */
+.map-container .google-map {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Loading message style */
+.loading-message {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-top: 20px;
+}
+
+/* Error message style */
+.error-message {
+  font-size: 1.2rem;
+  color: #e74c3c;
+  margin-top: 20px;
+}
+
+/* InfoWindow style */
+.info-window {
+  font-family: 'Fira Mono', monospace;
+  background-color: #333; /* Dark background */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.info-window h3 {
+  font-size: 1.2rem;
+  color: #fff; /* Light text */
+  margin-bottom: 10px;
+}
+
+.info-window p {
+  font-size: 1rem;
+  color: #ccc; /* Light gray text */
+  margin: 5px 0;
+}
+
+.info-window strong {
+  color: #fff; /* Light text */
+}
+
+/* Buttons Container */
+.buttons-container {
+  display:grid;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 10px; /* Space between Report Crime and Location buttons */
+  margin-top: 20px;
+ 
 }
 
-.App-link {
-  color: #61dafb;
+
+/* Location Buttons Container */
+.location-buttons {
+  position: relative; /* Container for absolute positioning */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Select Location Button */
+.select-location-button {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 7px;
+  font-weight: bold;
+  font-family: 'Fira Mono', monospace;
+  position: absolute; /* Absolute positioning */
+  top: 0;
+  left: 0;
+  width: 400px; /* Fixed width for equal sizing */
+}
+
+
+/* Confirm Location Button */
+.confirm-location-button {
+  padding: 10px;
+  background-color: #000;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 7px;
+  font-weight: bold;
+  font-family: 'Fira Mono', monospace;
+  position: absolute; /* Absolute positioning */
+  top: 0;
+  left: 0;
+  width: 400px; /* Fixed width for equal sizing */
+}
+
+
+/* Report Crime Button */
+.report-button {
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 7px;
+  font-weight: bold;
+  font-family: 'Fira Mono', monospace;
+  width: 400px;
+}
+
+/* button CSS */
+button {
+  font: inherit;
+  color: currentColor;
+  background-color: #000;
+  border: .2em solid var(--darkGray);
+/*   border: .2em solid transparent; */
+  border-radius: .5em;
+  transition: all .25s ease-in;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(90deg, var(--glowRed) 0, transparent 1em, transparent 100%),
+    linear-gradient(0deg, var(--glowRed) 0, transparent 1em, transparent 100%),
+    linear-gradient(270deg, var(--glowRed) 0, transparent 1em, transparent 100%),
+    linear-gradient(180deg, var(--glowRed) 0, transparent 1em, transparent 100%);
+  background-position: -1em 0, 0 1em, 1em 0, 0 -1em;
+  width: 6em;
+  font-size: 150%;
+  white-space: nowrap;
+}
+
+button:focus, button:hover {
+  border: .2em solid var(--litRed);
+  box-shadow: 0 0 1.2em var(--litRed), inset 0 0 1.2em var(--litRed);
+  outline: none;
+}
+
+button:focus + button, button:hover  + button {
+  border-bottom-color: var(--darkGray);
+  background-position: -1em 0, 0 1em, 1em 0, 0 0;
+}
+button:has(+ button:focus), button:has(+ button:hover) {
+  border-top-color: var(--darkGray);
+  background-position: -1em 0, 0 0, 1em 0, 0 -1em;
+}
+
+
+/* Report Crime Form Overlay */
+.report-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.report-form {
+  background-color: #222;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  color: #fff;
+}
+
+.report-form h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.report-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.report-form input,
+.report-form textarea,
+.report-form select {
+  width: 95%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  font-family: 'Fira Mono', monospace;
+}
+
+.report-form input:focus,
+.report-form textarea:focus,
+.report-form select:focus {
+  outline: none;
+  border-color: #cc0000;
+}
+
+.report-form button {
+  margin: 15px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  border-radius: 5px;
+  font-family: 'Fira Mono', monospace;
+}
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  body{
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    padding: 0px;
   }
-  to {
-    transform: rotate(360deg);
+  .map-container {
+    width: 95%;
+    height: 70vh;
+  }
+
+  .mainheader {
+    font-size: 25px;
+    padding-bottom: 20px;
+  }
+
+  .report-form {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .report-form h2 {
+    font-size: 1.25rem;
+  }
+
+  .report-form label {
+    font-size: 0.9rem;
+  }
+
+  .report-form input,
+  .report-form textarea,
+  .report-form select {
+    font-size: 0.9rem;
+  }
+
+  .report-form button {
+    font-size: 1rem;
+    padding: 8px 10px;
+  }
+  .report-button{
+    width: 230px;
+  }
+  .buttons-container {
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5px;
+  }
+
+  .select-location-button,
+  .confirm-location-button {
+    width: 100%; /* Full width on smaller screens */
+  }
+  button:focus + button, button:hover + button {
+    border-right-color: var(--darkGray);
+    background-position: 0 0, 0 1em, 1em 0, 0 -1em;
+  }
+
+  button:has(+ button:focus), button:has(+ button:hover) {
+    border-left-color: var(--darkGray);
+    background-position: -1em 0, 0 1em, 0 0, 0 -1em;
   }
 }
